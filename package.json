@@ -1,0 +1,29 @@
+{
+  "name": "salestracker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Chaitanya2872/salestracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Chaitanya2872/salestracker/issues"
+  },
+  "homepage": "https://github.com/Chaitanya2872/salestracker#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "moment": "^2.30.1",
+    "mssql": "^12.1.1",
+    "mysql2": "^3.15.3",
+    "pdfkit": "^0.17.2"
+  }
+}

@@ -1,10 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Data Deletion Instructions</title>
+    <title>Attendance Table</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background: #eee;
+        }
+    </style>
 </head>
 <body>
-  <h1>Data Deletion Request</h1>
-  <p>If you want your data to be deleted from our systems, please email us at <a href="mailto:connect@iotiq.co.in">connect@iotiq.co.in</a> with your user ID and data deletion request.</p>
+
+<h2>Employee Attendance</h2>
+
+<table id="dataTable">
+    <thead>
+        <tr>
+            <th>Emp Code</th>
+            <th>Punch Time</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+</table>
+
+<script>
+async function loadData() {
+    try {
+        const res = await fetch("http://localhost:5000/api/transactions");
+        const data = await res.json();
+
+        console.log("API Response:", data);
+
+        const tbody = document.getElementById("dataTable").querySelector("tbody");
+        tbody.innerHTML = "";
+
+        data.forEach(row => {
+            const tr = document.createElement("tr");
+            tr.innerHTML = `
+                <td>${row.emp_code}</td>
+                <td>${new Date(row.punch_time).toLocaleString()}</td>
+            `;
+            tbody.appendChild(tr);
+        });
+    } catch (err) {
+        console.error("Error loading data:", err);
+    }
+}
+
+// Load on page start
+loadData();
+</script>
+
 </body>
 </html>
